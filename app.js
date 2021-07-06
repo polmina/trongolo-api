@@ -2,7 +2,9 @@ const getLogo = require("./getLogo");
 const download = require("./saveImage");
 
 const codes036 = require("./codes/036.json");
-let sid = "036";
+const codes389 = require("./codes/389.json");
+
+let sid = "389";
 const CHUNK_SIZE = 20;
 
 const logos = {
@@ -12,6 +14,7 @@ const logos = {
   LOGO5: "bcb0a0f9-a61e-4591-b997-ec9079d7d2dd",
   LOGO8: "eec19851-42bb-4800-ab13-62de1bb49803",
 };
+let codes = codes389;
 let currentLogos = {};
 const start = async () => {
   for (let key in logos) {
@@ -19,11 +22,11 @@ const start = async () => {
     //getLogo(logo, async ({ status, logoguid }) => {
     //console.log("status", status);
 
-    codes036.length = 50;
+    codes.length = 50;
 
-    for (let i = 0; i < codes036.length; i++) {
+    for (let i = 0; i < codes.length; i++) {
       console.log(i);
-      let [code, color] = codes036[i];
+      let [code, color] = codes[i];
       let spcode = code;
       let url = `https://app.promotron.com/api/PPAEXOmtyYPnqWgdR192r7MTP9jr5FRRAsWOu0aE/GvsRT40YLwgsw5RaIXe6Ky1Y0SqRe5E8WeBECFGh/visual/motive?sid=${sid}&spcode=${spcode}&motive=${logoguid}`;
 
@@ -40,7 +43,7 @@ const start = async () => {
 const startDownloads = () => {
   return new Promise((resolve) => {
     for (let key in currentLogos) {
-      download(currentLogos[key], `images036/${key}.png`, function () {
+      download(currentLogos[key], `images${}/${key}.png`, function () {
         currentLogos[key] = true;
         if (Object.values(currentLogos).every((e) => e === true)) {
           currentLogos = {};
