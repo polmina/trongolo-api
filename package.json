@@ -4,7 +4,7 @@
   "description": " A basic starter for an express.js API",
   "main": "index.js",
   "scripts": {
-    "start": "node src/index.js",
+    "start": "node app.js",
     "lint": "eslint --fix src",
     "test": "mocha --exit"
   },
@@ -15,7 +15,10 @@
     "url": "https://github.com/w3cj/express-api-starter.git"
   },
   "license": "MIT",
-  "dependencies": {},
+  "dependencies": {
+    "node-fetch": "^2.6.1",
+    "request": "^2.88.2"
+  },
   "devDependencies": {
     "eslint": "^7.28.0",
     "eslint-config-airbnb-base": "^14.2.1",
